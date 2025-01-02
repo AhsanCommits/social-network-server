@@ -17,8 +17,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: [true, "Password is required!"],
-        minlength: [8, "Password must be at least 8 characters long!"],
-        match: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character!"],
+        minlength: [6, "Password length should be greater than 6 character"],
         select: true,
     },
     location: { type: String },
@@ -26,7 +25,7 @@ const userSchema = new Schema({
     profession: { type: String },
     friends: [{ type: Schema.Types.ObjectId, ref: "Users" }],
     views: [{ type: String }],
-    verfied: { type: Boolean, default: false },
+    privacy: { type: Boolean, default: false },
 },
     { timestamps: true }
 );
