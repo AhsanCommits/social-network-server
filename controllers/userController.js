@@ -123,10 +123,9 @@ export const friendRequest = async (req, res, next) => {
 export const getFriendRequest = async (req, res) => {
     try {
         const { userId } = req.body.user;
-
         const request = await FriendRequest.find({
             requestTo: userId,
-            requestStatus: "Pending",
+            requestStatus: "pending",
         })
             .populate({
                 path: "requestFrom",

@@ -145,12 +145,14 @@ export const likePost = async (req, res, next) => {
     const { userId } = req.body.user;
     const { id } = req.params;
 
+    console.log(userId);
+
     const post = await Posts.findById(id);
 
     const index = post.likes.findIndex((pid) => pid === String(userId));
-
     if (index === -1) {
       post.likes.push(userId);
+
     } else {
       post.likes = post.likes.filter((pid) => pid !== String(userId));
     }
@@ -236,6 +238,7 @@ export const likePostComment = async (req, res, next) => {
 export const commentPost = async (req, res, next) => {
   try {
     const { comment, from } = req.body;
+    console.log(req.body)
     const { userId } = req.body.user;
     const { id } = req.params;
 

@@ -3,7 +3,7 @@
 export const errorMiddleware = (err, req, res, next) => {
     const defaultError = {
         statusCode: 404,
-        success: "failed",
+        status: "failed",
         message: err,
     };
 
